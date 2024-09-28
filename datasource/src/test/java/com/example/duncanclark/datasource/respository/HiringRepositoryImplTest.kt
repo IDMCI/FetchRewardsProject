@@ -25,7 +25,7 @@ class HiringRepositoryImplTest {
     }
 
     @Test
-    fun `When getHiringList, Then emit success`() = runTest {
+    fun `Given a successful call, When getHiringList, Then emit success`() = runTest {
         val hiringList = listOf(RemoteHiringModel(1L, 2, "hello"))
         val call: Call<List<RemoteHiringModel>> = Calls.response(hiringList)
         val expected = Result.success(hiringList)

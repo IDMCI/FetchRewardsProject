@@ -66,7 +66,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.logging.interceptor)
     implementation(libs.dagger.hilt)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.androidx.hilt.navigation)

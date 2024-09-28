@@ -6,12 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.duncanclark.domain"
+    namespace = "domain"
     compileSdk = 34
 
     defaultConfig {
         minSdk = 28
-        targetSdk = 34
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -48,4 +47,7 @@ dependencies {
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockk)
+    testImplementation(libs.mockito.kotlin)
 }

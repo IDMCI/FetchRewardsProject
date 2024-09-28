@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "FetchRewardsProject"
 include(":app")
+include(":datasource")
+include(":domain")

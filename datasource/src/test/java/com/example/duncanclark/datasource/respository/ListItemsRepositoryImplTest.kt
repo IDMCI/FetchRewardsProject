@@ -1,7 +1,7 @@
 package com.example.duncanclark.datasource.respository
 
+import com.example.duncanclark.common.mapper.Mapper
 import com.example.duncanclark.datasource.remote.RemoteHiringService
-import com.example.duncanclark.domain.mapper.RemoteMapper
 import com.example.duncanclark.domain.model.ListItem
 import com.example.duncanclark.domain.model.ListItems
 import com.example.duncanclark.domain.model.RemoteListItem
@@ -21,7 +21,7 @@ import retrofit2.mock.Calls
 class ListItemsRepositoryImplTest {
 
     // Mocks
-    private val mockMapper: RemoteMapper<RemoteListItems, ListItems> = mock()
+    private val mockMapper: Mapper<RemoteListItems, ListItems> = mock()
 
     // Mockks
     private val mockkService: RemoteHiringService = mockk()

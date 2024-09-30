@@ -1,7 +1,7 @@
 package com.example.duncanclark.datasource.respository
 
+import com.example.duncanclark.common.mapper.Mapper
 import com.example.duncanclark.datasource.remote.RemoteHiringService
-import com.example.duncanclark.domain.mapper.RemoteMapper
 import com.example.duncanclark.domain.model.ListItems
 import com.example.duncanclark.domain.model.RemoteListItems
 import com.example.duncanclark.domain.repository.ListItemsRepository
@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class ListItemsRepositoryImpl @Inject constructor(
     private val hiringService: RemoteHiringService,
-    private val mapper: RemoteMapper<RemoteListItems, ListItems>
+    private val mapper: Mapper<RemoteListItems, ListItems>
 ): ListItemsRepository<Flow<Result<ListItems>>> {
     override suspend fun getData(): Flow<Result<ListItems>> = flow {
         try {

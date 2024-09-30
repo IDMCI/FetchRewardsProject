@@ -23,3 +23,5 @@ rootProject.name = "FetchRewardsProject"
 include(":app")
 include(":datasource")
 include(":domain")
+include(":ui_feature_listitems")
+include(":common")

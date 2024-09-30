@@ -12,7 +12,7 @@ import org.junit.Test
 import org.mockito.Mockito.mock
 import org.mockito.kotlin.whenever
 
-class GetListItemsUseCaseImplTest {
+class GetListItemsUseCaseTest {
 
     // Mocks
     private val mockRepository: ListItemsRepository<Flow<Result<ListItems>>> = mock()
@@ -22,11 +22,11 @@ class GetListItemsUseCaseImplTest {
     private val stubListId = 2
     private val stubName = "hello"
 
-    private lateinit var subject: GetListItemsUseCaseImpl
+    private lateinit var subject: GetListItemsUseCase
 
     @Before
     fun before() {
-        subject = GetListItemsUseCaseImpl(
+        subject = GetListItemsUseCase(
             mockRepository
         )
     }

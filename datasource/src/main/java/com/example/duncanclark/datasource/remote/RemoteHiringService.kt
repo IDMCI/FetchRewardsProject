@@ -1,10 +1,10 @@
 package com.example.duncanclark.datasource.remote
 
-import com.example.duncanclark.datasource.model.RemoteHiringModel
+import com.example.duncanclark.domain.model.RemoteListItem
 import retrofit2.Call
 import retrofit2.http.GET
 
 interface RemoteHiringService {
     @GET("hiring.json")
-    fun getHiringData(): Call<List<RemoteHiringModel>>
+    fun getItemListData(): Call<List<RemoteListItem>>
 }

@@ -1,20 +1,21 @@
 package com.example.duncanclark.datasource.remote
 
-import com.example.duncanclark.datasource.model.RemoteHiringModel
+import com.example.duncanclark.domain.model.RemoteListItem
+import com.example.duncanclark.domain.model.RemoteListItems
 import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
-import org.junit.Assert.assertEquals
 import retrofit2.await
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import java.util.concurrent.TimeUnit
 
-class RemoteHiringServiceTest {
+class RemoteItemListServiceTest {
 
     private lateinit var okHttpClient: OkHttpClient
     private lateinit var retrofit: Retrofit
@@ -30,14 +31,14 @@ class RemoteHiringServiceTest {
 
     @Test
     fun `Given Remote API,  When getHiringData, Then Return json`() = runTest {
-        val expected = RemoteHiringModel(
+        val expected = RemoteListItem(
             id = 755,
             listId = 2,
             name = ""
         )
 
         try {
-            val results = subject.getHiringData().await()
+            val results = subject.getItemListData().await()
             val actual = results.first()
 
             assertEquals(expected, actual)
@@ -52,8 +53,7 @@ class RemoteHiringServiceTest {
         private val _service by lazy { retrofit.create(RemoteHiringService::class.java) }
 
         @GET("hiring.json")
-        override fun getHiringData(): Call<List<RemoteHiringModel>> =
-            _service.getHiringData()
+        override fun getItemListData(): Call<RemoteListItems> = _service.getItemListData()
     }
 
     inner class TestOkHttpBuilder() {

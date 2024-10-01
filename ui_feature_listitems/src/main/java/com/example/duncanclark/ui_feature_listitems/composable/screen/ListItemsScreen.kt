@@ -1,5 +1,6 @@
 package com.example.duncanclark.ui_feature_listitems.composable.screen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,9 +21,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.duncanclark.common.ui.state.UiState
+import com.example.duncanclark.domain.model.ListItem
 import com.example.duncanclark.ui_feature_listitems.composable.component.LazyListItemsColumn
 import com.example.duncanclark.ui_feature_listitems.view_model.ListItemsViewModel
 import ui_feature_listitems.R
@@ -30,7 +32,7 @@ import ui_feature_listitems.R
 @Composable
 fun ListItemsScreen(
     modifier: Modifier,
-    navController: NavController = rememberNavController(),
+    navController: NavHostController = rememberNavController(),
     viewModel: ListItemsViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -71,18 +73,19 @@ fun ListItemsScreen(
 
     if (showStatusMessage) {
         Column(
-            modifier = modifier.fillMaxSize(),
+            modifier = modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.secondary),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-
             Text(
                 modifier = Modifier.padding(12.dp),
                 text = statusMessage,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
                 fontStyle = FontStyle.Italic,
-                color = MaterialTheme.colorScheme.primary,
+                color = MaterialTheme.colorScheme.onSecondary,
             )
         }
     }

@@ -40,4 +40,4 @@ The project is organized following the clean architecture principles, with separ
 The project includes unit tests for the domain and datasource layers and an integration test for the remote endpoint interaction.
 
 ### ScreenShot: ###
-![final_list](https://github.com/user-attachments/assets/b3c1730b-cf24-4f57-91bf-6bf794f235d7)
+<img height="540" alt="items_llist" src="https://github.com/user-attachments/assets/b3c1730b-cf24-4f57-91bf-6bf794f235d7">

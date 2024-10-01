@@ -11,3 +11,19 @@ sealed class ListItem {
         val name: String
     ): ListItem()
 }
+
+// TODO DC: Ask product manager if the desired sort order is alphabetically or numerically.
+/**
+ * Sorting Requirements:
+ * - Display all the items grouped by "listId".
+ * - Sort the results first by "listId" then by "name" when displaying.
+ * - Filter out any items where "name" is blank or null.
+ */
+fun List<ListItem.Item>.groupByListIdThenName(): ListItems {
+    val myGroup = this.groupBy { it.listId }
+        .flatMap { (_, group) ->
+            group.sortedBy { it.name }
+        }
+        .sortedBy { it.listId }
+    return myGroup
+}

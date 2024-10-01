@@ -1,5 +1,6 @@
 package com.example.duncanclark.domain.usecase
 
+import com.example.duncanclark.domain.helper.GetListItemsUseCaseHelperImpl
 import com.example.duncanclark.domain.model.ListItem
 import com.example.duncanclark.domain.model.ListItems
 import com.example.duncanclark.domain.repository.ListItemsRepository
@@ -16,6 +17,7 @@ class GetListItemsUseCaseTest {
 
     // Mocks
     private val mockRepository: ListItemsRepository<Flow<Result<ListItems>>> = mock()
+    private val mockHelper: GetListItemsUseCaseHelperImpl = mock()
 
     // Stubs
     private val stubId = 1L
@@ -27,16 +29,18 @@ class GetListItemsUseCaseTest {
     @Before
     fun before() {
         subject = GetListItemsUseCase(
-            mockRepository
+            mockRepository,
+            mockHelper,
         )
     }
 
     @Test
     fun `When execute, Then return expected list`() = runTest {
-        val response = listOf(ListItem.Item(stubId, stubListId, stubName))
-        val expected = flowOf(Result.success(response))
+        val data = listOf(ListItem.Item(stubId, stubListId, stubName))
+        val expected = flowOf(Result.success(data))
 
         whenever(mockRepository.getData()).thenReturn(expected)
+        whenever(mockHelper.invoke(expected)).thenReturn(expected)
 
         val actual = subject.execute()
 

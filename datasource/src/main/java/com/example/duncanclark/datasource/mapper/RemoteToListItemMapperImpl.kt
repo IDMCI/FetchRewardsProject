@@ -8,7 +8,7 @@ import com.example.duncanclark.domain.model.removeUnknownNames
 import javax.inject.Inject
 
 class RemoteToListItemMapperImpl @Inject constructor(): Mapper<RemoteListItems, ListItems> {
-    override fun invoke(input: RemoteListItems): ListItems {
+    override operator fun invoke(input: RemoteListItems): ListItems {
         return input
             .removeUnknownNames() // Removes empty & null named items from list.
             .map {

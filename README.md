@@ -1,7 +1,7 @@
 # FetchRewardsProject #
 This is an Android application built using MVVM Clean Architecture with Jetpack Compose.
 
->>> NOTE: This is a take-home project for interviwing purposes only. <<<
+> NOTE: This is a take-home project for interviwing purposes only. 
 
 ## Features: ##
 
